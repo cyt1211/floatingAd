@@ -1,0 +1,198 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>飘窗</title>
+        <meta http-equiv=”X-UA-Compatible” content=”IE=edge,chrome=1″/>
+        <meta http-equiv="content-Type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="./assets/js/jquery-1.12.3.min.js"></script>
+        <style type="text/css">
+            .float_div {
+                position: absolute;
+                z-index: 9999999;
+            }
+            .float_img {
+                width: 200px;
+                height: 200px;
+            }
+            .floatingAd .ad{
+                position: absolute;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="float_div" >
+            <a href="javascript:void(0);"><img class="float_img" id="float_img" src="./assets/img/test.jpeg"></a>
+        </div>
+        <div id="floatingAd" class="floatingAd">
+        </div>
+         <script type="text/javascript" src="./assets/js/floatAd.js"></script>
+        <script type="text/javascript">
+            var intervalX = 1, intervalY = 1;
+            var posX = 0, posY = 0;
+            var interval = 1;
+            var time;
+            
+            var divArr = document.getElementById("float_img");
+            var floatDivObj = null;
+            floatDivObj = divArr;
+            time=window.setInterval("float()", 10);
+            function float() {
+                posX += (interval * intervalX);
+                posY += (interval * intervalY);
+                $(".float_div").css("top", posY);
+                $(".float_div").css("left", posX);
+                var w=floatDivObj.offsetWidth||0;
+                var h=floatDivObj.offsetHeight||0;
+                if (posX < 1 || posX +  w+5 > $(document).width()) {
+                    intervalX = -intervalX;
+                }
+                if (posY < 1 || posY + h + 10 > $(document).height()){
+                    intervalY = -intervalY;
+                }
+            }
+            $(".float_div").mouseover(function(){
+                window.clearInterval(time);
+            }).mouseout(function(){
+                time=window.setInterval("float()", 10);
+            });
+
+            $(function(){   
+                $.floatingAd(
+                {
+                    //飘动频率
+                    delay: 10,
+                    //超链接后是否关闭漂浮
+                    isLinkClosed: true,
+                    //漂浮内容
+                    ad: [{
+                        //关闭区域背景透明度(0.1-1)
+                        headFilter: 0.3,
+                        //图片
+                        'img': './assets/img/test.jpeg',
+                        //图片高度
+                        'imgHeight': 120,
+                        //图片宽度
+                        'imgWidth': 201,
+                        //图片链接
+                        'linkUrl': 'http://ggfw.gdhrss.gov.cn/gwyks',
+                        //浮动层级别
+                        'z-index': 9999999,
+                        //标题
+                        'title': ''
+                    },
+                    /*  
+                    {
+                        //关闭区域背景透明度(0.1-1)
+                        headFilter: 0.3,
+                        //图片
+                        'img': '/publicfiles//model/htmltemplate/gdhrss/images/szyf.gif',
+                        //图片高度
+                        'imgHeight': 70,
+                        //图片宽度
+                        'imgWidth': 196,
+                        //图片链接
+                        'linkUrl': 'http://www.gdrc.com/sanzhiyifuTemp/',
+                        //浮动层级别
+                        'z-index': 9999999,
+                        //标题
+                        'title': ''
+                    },          
+                    {
+                        //关闭区域背景透明度(0.1-1)
+                        headFilter: 0.3,
+                        //图片
+                        'img': '/publicfiles//model/htmltemplate/gdhrss/images/12333fzp.gif',
+                        //图片高度
+                        'imgHeight': 70,
+                        //图片宽度
+                        'imgWidth': 197,
+                        //图片链接
+                        'linkUrl': '/publicfiles/business/htmlfiles/gdhrss/tzgg/201309/45041.html',
+                        //浮动层级别
+                        'z-index': 9999999,
+                        //标题
+                        'title': ''
+                    },*/
+                    /*{
+                        //action
+                        //关闭区域背景透明度(0.1-1)
+                        headFilter: 0.3,
+                        //图片
+                        'img': '/publicfiles//model/htmltemplate/gdhrss/images/mzshhzt.jpg',
+                        //图片高度
+                        'imgHeight': 120,
+                        //图片宽度
+                        'imgWidth': 220,
+                        //图片链接
+                        'linkUrl': 'http://www.gdhrss.gov.cn/sofpro/gecs/ly/reception/syss_liuyan.html',
+                        //浮动层级别
+                        'z-index': 9999999,
+                        //标题
+                        'title': ''
+                    },*/
+                    /*
+                    {
+                        //关闭区域背景透明度(0.1-1)
+                        headFilter: 0.3,
+                        //图片
+                        'img': '/publicfiles//model/htmltemplate/gdhrss/images/2015nmg.jpg',
+                        //图片高度
+                        'imgHeight': 120,
+                        //图片宽度
+                        'imgWidth': 250,
+                        //图片链接
+                        'linkUrl': 'http://www.gdhrss.gov.cn/publicfiles/business/htmlfiles/gdhrss/tzgg/201502/50129.html',
+                        //浮动层级别
+                        'z-index': 9999999,
+                        //标题
+                        'title': ''
+                    },
+                    {
+                        //关闭区域背景透明度(0.1-1)
+                        headFilter: 0.3,
+                        //图片
+                        'img': '/publicfiles//model/htmltemplate/gdhrss/images/qmshgg.jpg',
+                        //图片高度
+                        'imgHeight': 120,
+                        //图片宽度
+                        'imgWidth': 200,
+                        //图片链接
+                        'linkUrl': 'http://www.gdhrss.gov.cn/publicfiles/business/htmlfiles/qmshgg/index.html',
+                        //浮动层级别
+                        'z-index': 9999999,
+                        //标题
+                        'title': ''
+                    },*/
+                    /*{
+                        //关闭区域背景透明度(0.1-1)
+                        headFilter: 0.3,
+                        //图片
+                        'img': '/publicfiles//model/htmltemplate/gdhrss/images/20150327.jpg',
+                        //图片高度
+                        'imgHeight': 150,
+                        //图片宽度
+                        'imgWidth': 320,
+                        //图片链接
+                        'linkUrl': 'http://www.gdhrss.gov.cn/publicfiles/business/htmlfiles/gdhrss/tzgg/201503/50431.html',
+                        //浮动层级别
+                        'z-index': 9999999,
+                        //标题
+                        'title': ''
+                    }*/
+                    ],
+                    //关闭事件
+                    onClose: function(elem){
+                        //alert('关闭');
+                    }
+                });
+                $("#aa").floatingAd({
+                    onClose: function(elem){
+                    }
+                });
+            }); 
+            
+    
+        </script>
+    </body>
+</html>
